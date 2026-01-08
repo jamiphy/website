@@ -1,218 +1,592 @@
 /*
-  Jamiphy Retro Theme
-  -------------------
-  A lightweight stylesheet that gives the site authentic retro-computing vibes while
-  keeping Tailwind utility classes available. Tailwind still handles layout and
-  responsive sizing – this sheet adds colour palette, typography and special
-  effects.
+  Jamiphy Retro Professional Theme
+  --------------------------------
+  A sophisticated retro-computing aesthetic that balances nostalgic charm
+  with modern professionalism. Think 80s high-end computing meets today.
 */
 
-/* 1. Import pixel-style font */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* 1. Import fonts - IBM Plex Mono for that professional retro-computing feel */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* 2. CSS variables for easy theming */
 
 /* Light theme (default) */
 :root {
-  --retro-bg: #f8f9fb;        /* light paper */
-  --retro-fg: #4c1d95;        /* deep purple text */
-  --retro-accent: #7c3aed;    /* violet accent */
-  --retro-dim: #e5e7eb;       /* light gray for nav/footer */
+  --retro-bg: #faf9f7;
+  --retro-bg-alt: #f0efed;
+  --retro-fg: #1a1a2e;
+  --retro-fg-muted: #4a4a5a;
+  --retro-accent: #6366f1;
+  --retro-accent-hover: #4f46e5;
+  --retro-dim: #e8e7e5;
+  --retro-border: #d1d0ce;
+  
+  /* Accent palette */
   --retro-purple: #7c3aed;
-  --retro-green: #059669;
-  --retro-pink:  #db2777;
-  --retro-cyan:  #0891b2;
-  --retro-yellow:#f59e0b;
-  --scanline-color: rgba(0, 0, 0, 0.15); /* scanlines for light bg */
-  --hero-overlay: rgba(255, 255, 255, 0.85);
+  --retro-green: #10b981;
+  --retro-pink: #ec4899;
+  --retro-cyan: #06b6d4;
+  --retro-amber: #f59e0b;
+  --retro-red: #ef4444;
+  
+  /* Effects */
+  --glow-color: rgba(99, 102, 241, 0.4);
+  --glow-strong: rgba(99, 102, 241, 0.6);
+  --scanline-color: rgba(0, 0, 0, 0.03);
+  --hero-overlay: rgba(250, 249, 247, 0.92);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px var(--glow-color);
 }
 
-/* Explicit dark theme (matches original colours) */
+/* Dark theme */
 :root[data-theme="dark"] {
-  --retro-bg: #0d0d0d;        /* deep CRT black */
-  --retro-fg: #c084fc;        /* primary neon purple */
-  --retro-accent: #ff66ff;    /* pink accent */
-  --retro-dim: #1a1a1a;       /* slightly lighter black for nav/footer */
-  --retro-purple: #c084fc;
-  --retro-green: #33ff33;
-  --retro-pink:  #ff66ff;
-  --retro-cyan:  #00ffff;
-  --retro-yellow:#ffff66;
-  --scanline-color: rgba(255, 255, 255, 0.15); /* more visible white scanlines for dark bg */
-  --hero-overlay: rgba(0, 0, 0, 0.65);
+  --retro-bg: #0a0a0f;
+  --retro-bg-alt: #12121a;
+  --retro-fg: #e4e4e7;
+  --retro-fg-muted: #a1a1aa;
+  --retro-accent: #818cf8;
+  --retro-accent-hover: #a5b4fc;
+  --retro-dim: #18181b;
+  --retro-border: #27272a;
+  
+  --retro-purple: #a78bfa;
+  --retro-green: #34d399;
+  --retro-pink: #f472b6;
+  --retro-cyan: #22d3ee;
+  --retro-amber: #fbbf24;
+  --retro-red: #f87171;
+  
+  --glow-color: rgba(129, 140, 248, 0.3);
+  --glow-strong: rgba(129, 140, 248, 0.5);
+  --scanline-color: rgba(255, 255, 255, 0.02);
+  --hero-overlay: rgba(10, 10, 15, 0.88);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 30px var(--glow-color);
 }
 
 /* Follow user OS preference when no explicit data-theme attribute present */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --retro-bg: #0d0d0d;
-    --retro-fg: #c084fc;
-    --retro-accent: #ff66ff;
-    --retro-dim: #1a1a1a;
-    --retro-purple: #c084fc;
-    --retro-green: #33ff33;
-    --retro-pink:  #ff66ff;
-    --retro-cyan:  #00ffff;
-    --retro-yellow:#ffff66;
-    --scanline-color: rgba(255, 255, 255, 0.15);
-    --hero-overlay: rgba(0, 0, 0, 0.65);
+    --retro-bg: #0a0a0f;
+    --retro-bg-alt: #12121a;
+    --retro-fg: #e4e4e7;
+    --retro-fg-muted: #a1a1aa;
+    --retro-accent: #818cf8;
+    --retro-accent-hover: #a5b4fc;
+    --retro-dim: #18181b;
+    --retro-border: #27272a;
+    
+    --retro-purple: #a78bfa;
+    --retro-green: #34d399;
+    --retro-pink: #f472b6;
+    --retro-cyan: #22d3ee;
+    --retro-amber: #fbbf24;
+    --retro-red: #f87171;
+    
+    --glow-color: rgba(129, 140, 248, 0.3);
+    --glow-strong: rgba(129, 140, 248, 0.5);
+    --scanline-color: rgba(255, 255, 255, 0.02);
+    --hero-overlay: rgba(10, 10, 15, 0.88);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 30px var(--glow-color);
   }
 }
 
 /* 3. Global reset tweaks */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 body {
   background-color: var(--retro-bg);
   color: var(--retro-fg);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace;
+  font-size: 1rem;
+  line-height: 1.7;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* 4. Headings & brand use pixel font */
-h1, h2, h3, h4, h5, h6, .logo {
-  font-family: 'Press Start 2P', monospace;
+/* 4. Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+  font-weight: 700;
   line-height: 1.3;
-  text-shadow: 0 0 6px rgba(192, 132, 252, 0.8);
+  letter-spacing: -0.02em;
+  color: var(--retro-fg);
+}
+
+h1 {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+h3 {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+
+.logo {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+p {
+  color: var(--retro-fg-muted);
+  max-width: 65ch;
+}
+
+/* Refined text effects */
+.text-glow {
+  text-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--retro-accent) 0%, var(--retro-purple) 50%, var(--retro-pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle shimmer animation for headings */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--retro-fg) 0%,
+    var(--retro-accent) 25%,
+    var(--retro-purple) 50%,
+    var(--retro-accent) 75%,
+    var(--retro-fg) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 8s linear infinite;
 }
 
 /* 5. Links */
 a {
   color: var(--retro-fg);
   text-decoration: none;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  transition: color 0.2s ease;
 }
 
 a:hover {
   color: var(--retro-accent);
-  text-shadow: 0 0 6px rgba(255, 102, 255, 0.8);
 }
 
-/* 6. Buttons & interactive elements */
+/* Underline effect for inline links */
+.link-underline {
+  position: relative;
+  color: var(--retro-accent);
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--retro-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* 6. Buttons */
 .btn-retro {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--retro-fg);
   background: transparent;
   border: 2px solid var(--retro-fg);
-  padding: 0.75rem 1.5rem;
-  text-transform: uppercase;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.7rem;
-  color: var(--retro-fg);
-  display: inline-block;
-  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-retro::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--retro-purple), var(--retro-cyan), var(--retro-pink), var(--retro-yellow), var(--retro-purple));
-  background-size: 400%;
-  z-index: -1;
-  transform: scaleX(0);
-  transform-origin: left;
+  background: linear-gradient(135deg, var(--retro-accent), var(--retro-purple));
   opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.btn-retro:hover::before {
-  transform: scaleX(1);
-  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
 .btn-retro:hover {
-  background: transparent;
-  color: var(--retro-bg);
-  box-shadow: 0 0 10px var(--retro-pink),0 0 20px var(--retro-cyan);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
 }
 
-/* 7. Navigation bar */
+.btn-retro:hover::before {
+  opacity: 1;
+}
+
+.btn-retro:active {
+  transform: translateY(0);
+}
+
+/* Primary button variant */
+.btn-primary {
+  background: linear-gradient(135deg, var(--retro-accent), var(--retro-purple));
+  border-color: transparent;
+  color: white;
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-glow), var(--shadow-lg);
+}
+
+/* 7. Navigation */
 nav {
-  background-color: var(--retro-dim);
-  border-bottom: 2px solid var(--retro-fg);
-  box-shadow: 0 2px 10px rgba(0, 255, 0, 0.1);
+  background-color: var(--retro-bg);
+  border-bottom: 1px solid var(--retro-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 nav a {
-  font-size: 0.75rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--retro-fg-muted);
+  transition: color 0.2s ease;
 }
 
-/* 8. Footers */
+nav a:hover {
+  color: var(--retro-accent);
+}
+
+/* Active nav link */
+nav a.active {
+  color: var(--retro-accent);
+}
+
+/* Nav link subtle indicator */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--retro-accent);
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0);
+  transition: transform 0.2s ease;
+}
+
+.nav-link:hover::after {
+  transform: translateX(-50%) scale(1);
+}
+
+/* 8. Footer */
 footer {
-  background: var(--retro-dim);
-  border-top: 2px solid var(--retro-fg);
-  font-size: 0.7rem;
+  background: var(--retro-bg-alt);
+  border-top: 1px solid var(--retro-border);
+  padding: 2rem 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+footer p {
+  font-size: 0.8125rem;
+  color: var(--retro-fg-muted);
+  margin: 0;
 }
 
 /* 9. Hero section */
 .hero {
   position: relative;
-  padding: 6rem 1rem;
-  background: transparent;
+  padding: 8rem 1.5rem;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-/* pseudo-element for scanlines */
+/* Subtle scanlines */
 .hero::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 0,
-      rgba(0, 0, 0, 0) 2px,
-      var(--scanline-color) 3px,
-      var(--scanline-color) 4px
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    var(--scanline-color) 2px,
+    var(--scanline-color) 4px
   );
   pointer-events: none;
+  z-index: 2;
 }
 
-/* 10. Utility helpers */
-.text-shadow {
-  text-shadow: 0 0 6px rgba(192, 132, 252, 0.8);
+.hero-content {
+  position: relative;
+  z-index: 3;
+  background: var(--hero-overlay);
+  padding: 3rem 2.5rem;
+  border: 1px solid var(--retro-border);
+  border-radius: 2px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  max-width: 48rem;
+  width: 100%;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-/* Responsive tweaks */
 @media (min-width: 640px) {
-  .btn-retro {
-    font-size: 0.75rem;
+  .hero-content {
+    padding: 4rem 3.5rem;
   }
 }
 
-/* 11. Form fields */
+/* 10. Form styling */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--retro-fg);
+  margin-bottom: 0.5rem;
+}
+
 input[type="text"],
 input[type="email"],
 textarea {
-  background: transparent;
-  border: 2px solid var(--retro-fg) !important;
-  color: var(--retro-fg) !important;
-  border-radius: 0;
-  font-family: ui-monospace, monospace;
-  font-size: 0.875rem;
-  padding: 0.5rem 0.75rem;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9375rem;
+  color: var(--retro-fg);
+  background: var(--retro-bg-alt);
+  border: 2px solid var(--retro-border);
+  border-radius: 2px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--retro-fg);
+  color: var(--retro-fg-muted);
   opacity: 0.6;
 }
 
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: var(--retro-accent) !important;
-  box-shadow: 0 0 8px var(--retro-accent);
+  border-color: var(--retro-accent);
+  box-shadow: 0 0 0 3px var(--glow-color);
+  background: var(--retro-bg);
 }
 
-/* 12. Hamburger icon */
-/* Material Symbols base */
+.form-group textarea,
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  padding: 0.875rem 1rem !important;
+}
+
+/* 11. Cards & containers */
+.card {
+  background: var(--retro-bg-alt);
+  border: 1px solid var(--retro-border);
+  border-radius: 2px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* 12. Work/portfolio item styling */
+.work-item {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  background: var(--retro-bg-alt);
+  border: 1px solid var(--retro-border);
+  border-left: 3px solid var(--retro-accent);
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+
+.work-item:hover {
+  background: var(--retro-bg);
+  border-left-color: var(--retro-purple);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.work-item-title {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--retro-fg);
+  margin-bottom: 0.25rem;
+}
+
+.work-item-desc {
+  font-size: 0.875rem;
+  color: var(--retro-fg-muted);
+  margin: 0;
+}
+
+/* 13. Utility classes */
+.container {
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--retro-border), transparent);
+  margin: 3rem 0;
+}
+
+/* Terminal-style decorative element */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--retro-dim);
+  border-bottom: 1px solid var(--retro-border);
+  margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+  border-radius: 2px 2px 0 0;
+}
+
+.terminal-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+}
+
+.terminal-dot.red { background: var(--retro-red); }
+.terminal-dot.amber { background: var(--retro-amber); }
+.terminal-dot.green { background: var(--retro-green); }
+
+/* 14. Theme toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--retro-border);
+  border-radius: 2px;
+  color: var(--retro-fg-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--retro-accent);
+  border-color: var(--retro-accent);
+  background: var(--retro-bg-alt);
+}
+
+.theme-toggle .material-symbols-rounded {
+  font-size: 1.25rem;
+}
+
+/* 15. Hamburger/mobile menu */
+#nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  color: var(--retro-fg);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+#nav-toggle:hover {
+  color: var(--retro-accent);
+}
+
+#nav-toggle .material-symbols-rounded {
+  font-size: 1.5rem;
+}
+
+/* Mobile menu styling */
+#mobile-menu {
+  background: var(--retro-bg-alt);
+  border-top: 1px solid var(--retro-border);
+}
+
+#mobile-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--retro-border);
+}
+
+/* 16. Material Symbols base */
 .material-symbols-rounded {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   display: inline-block;
@@ -220,82 +594,110 @@ textarea:focus {
   vertical-align: middle;
 }
 
-/* Hamburger icon (Material Symbols) */
-#nav-toggle .material-symbols-rounded {
-  color: var(--retro-fg);
-  font-size: 1.5rem;
-  transition: color 0.25s ease;
+/* 17. Page content styling */
+.page-content {
+  flex: 1;
+  padding: 4rem 0;
 }
 
-#nav-toggle:hover .material-symbols-rounded,
-#nav-toggle:focus .material-symbols-rounded {
-  color: var(--retro-accent);
+.page-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--retro-border);
 }
 
-/* 13. Form labels */
-.form-label {
-  color: var(--retro-fg);
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  display: block;
-  margin-bottom: 0.25rem;
-  text-shadow: 0 0 4px rgba(192, 132, 252, 0.7);
+.page-title {
+  margin-bottom: 0.5rem;
 }
 
-/* Rainbow text animation */
-@keyframes rainbow {
-  0%   { color: var(--retro-pink); }
-  25%  { color: var(--retro-cyan); }
-  50%  { color: var(--retro-green); }
-  75%  { color: var(--retro-yellow); }
-  100% { color: var(--retro-pink); }
+.page-subtitle {
+  color: var(--retro-fg-muted);
+  font-size: 1.0625rem;
 }
 
-.rainbow-text {
-  animation: rainbow 6s linear infinite;
+/* 18. Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Nav link hover multi-colour */
-nav a:hover {
-  animation: rainbow 4s linear infinite;
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: var(--shadow-glow);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--glow-strong);
+  }
 }
 
-/* 14. Theme toggle button */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border: 2px solid var(--retro-fg);
-  border-radius: 0.25rem;
-  color: var(--retro-fg);
-  background: transparent;
-  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.theme-toggle:hover,
-.theme-toggle:focus {
-  background: var(--retro-fg);
-  color: var(--retro-bg);
-  transform: scale(1.05);
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+
+/* 19. Responsive adjustments */
+@media (max-width: 640px) {
+  .hero {
+    padding: 5rem 1rem;
+    min-height: 60vh;
+  }
+  
+  .hero-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .btn-retro {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem;
+  }
 }
 
-.theme-toggle:active {
-  transform: scale(0.95);
+/* 20. Selection styling */
+::selection {
+  background: var(--retro-accent);
+  color: white;
 }
 
-.theme-toggle .material-symbols-rounded {
-  font-size: 1.25rem;
+/* 21. Scrollbar styling (webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-/* Readability panel behind hero copy */
-.hero-content {
-  background: var(--hero-overlay);
-  padding: 2rem 1rem;
-  border: 2px solid var(--retro-fg);
-  backdrop-filter: blur(3px);
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-  display: block;
-} 
+::-webkit-scrollbar-track {
+  background: var(--retro-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--retro-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--retro-fg-muted);
+}
+
+/* 22. Print styles */
+@media print {
+  .hero::after,
+  nav,
+  footer,
+  .btn-retro,
+  .theme-toggle {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+}

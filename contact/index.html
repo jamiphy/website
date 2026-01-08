@@ -8,7 +8,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Jamiphy" />
     <meta property="og:title" content="Jamiphy | Contact" />
-    <meta property="og:description" content="Say hello to Jamiphy about product work, open‑source collaboration, or engineering support." />
+    <meta property="og:description" content="Contact Jamiphy to discuss product development, open-source collaboration, or engineering support." />
     <meta property="og:url" content="https://jamiphy.com/contact/" />
     <meta property="og:image" content="https://jamiphy.com/images/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -17,7 +17,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Jamiphy | Contact" />
-    <meta name="twitter:description" content="Say hello to Jamiphy about product work, open‑source collaboration, or engineering support." />
+    <meta name="twitter:description" content="Contact Jamiphy to discuss product development, open-source collaboration, or engineering support." />
     <meta name="twitter:image" content="https://jamiphy.com/images/og-image.jpg" />
     <!-- Tailwind via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,24 +30,77 @@
     <jamiphy-header></jamiphy-header>
 
     <!-- Main content -->
-    <main class="flex-1 py-12">
-      <div class="max-w-lg mx-auto px-4">
-        <h1 class="text-3xl font-bold mb-6 text-center rainbow-text">Contact Us</h1>
-        <form class="space-y-6" action="#" method="POST">
-          <div>
-            <label for="name" class="form-label">Name</label>
-            <input id="name" name="name" type="text" required class="mt-1 block w-full" />
+    <main class="page-content">
+      <div class="container max-w-2xl">
+        <!-- Page header -->
+        <header class="page-header text-center animate-fade-in">
+          <h1 class="page-title gradient-text">Get in Touch</h1>
+          <p class="page-subtitle mx-auto">Have a project in mind? We would be delighted to hear from you.</p>
+        </header>
+
+        <!-- Contact form -->
+        <div class="card animate-fade-in animate-delay-1">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot amber"></span>
+            <span class="terminal-dot green"></span>
+            <span class="text-xs ml-2 text-[var(--retro-fg-muted)] font-mono">compose_message.sh</span>
           </div>
-          <div>
-            <label for="email" class="form-label">Email</label>
-            <input id="email" name="email" type="email" required class="mt-1 block w-full" />
-          </div>
-          <div>
-            <label for="message" class="form-label">Message</label>
-            <textarea id="message" name="message" rows="4" required class="mt-1 block w-full"></textarea>
-          </div>
-          <button type="submit" class="w-full btn-retro">Send Message</button>
-        </form>
+          
+          <form class="space-y-6" action="#" method="POST">
+            <div class="form-group">
+              <label for="name" class="form-label">
+                <span class="text-[var(--retro-green)]">$</span> Your Name
+              </label>
+              <input 
+                id="name" 
+                name="name" 
+                type="text" 
+                required 
+                placeholder="John Doe"
+                autocomplete="name"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">
+                <span class="text-[var(--retro-green)]">$</span> Email Address
+              </label>
+              <input 
+                id="email" 
+                name="email" 
+                type="email" 
+                required 
+                placeholder="you@example.com"
+                autocomplete="email"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">
+                <span class="text-[var(--retro-green)]">$</span> Your Message
+              </label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="5" 
+                required 
+                placeholder="Tell us about your project or how we can help..."
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="w-full btn-retro btn-primary">
+              <span class="material-symbols-rounded">send</span>
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Alternative contact -->
+        <p class="mt-8 text-sm text-[var(--retro-fg-muted)] text-center mx-auto animate-fade-in animate-delay-2">
+          Alternatively, you can reach us directly at 
+          <a href="mailto:contact@jamiphy.com" class="link-underline">contact@jamiphy.com</a>
+        </p>
       </div>
     </main>
 

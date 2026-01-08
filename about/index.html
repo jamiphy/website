@@ -8,7 +8,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Jamiphy" />
     <meta property="og:title" content="Jamiphy | About" />
-    <meta property="og:description" content="Jamiphy is an independent studio building products, contributing to open source, and partnering with teams on engineering." />
+    <meta property="og:description" content="Jamiphy is an independent software studio that builds products, contributes to open source, and partners with teams on engineering projects." />
     <meta property="og:url" content="https://jamiphy.com/about/" />
     <meta property="og:image" content="https://jamiphy.com/images/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -17,7 +17,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Jamiphy | About" />
-    <meta name="twitter:description" content="Jamiphy is an independent studio building products, contributing to open source, and partnering with teams on engineering." />
+    <meta name="twitter:description" content="Jamiphy is an independent software studio that builds products, contributes to open source, and partners with teams on engineering projects." />
     <meta name="twitter:image" content="https://jamiphy.com/images/og-image.jpg" />
     <!-- Tailwind via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,19 +30,89 @@
     <jamiphy-header></jamiphy-header>
 
     <!-- Main content -->
-    <main class="flex-1 py-12">
-      <div class="max-w-4xl mx-auto px-4">
-        <h1 class="text-3xl font-bold mb-6 rainbow-text">About Jamiphy</h1>
-        <p class="mb-4">Jamiphy is a product studio focused on building useful software. We design and ship our own products, contribute to the open‑source ecosystem, and work with partners who want calm, dependable engineering.</p>
-        <p class="mb-4">Engagements range from early product discovery and prototyping to hands‑on implementation, architecture, and delivery. We care about strong fundamentals, clear communication, and leaving systems better than we found them.</p>
-        <div class="mt-10">
-          <h2 class="text-2xl font-semibold mb-3">Selected work</h2>
-          <ul class="list-disc pl-6 space-y-2">
-            <li>
-              <a href="https://catholingo.com/" target="_blank" rel="noopener" class="underline">Catholingo</a> — Duolingo meets Catholic theology: a playful way to learn the faith.
-            </li>
-          </ul>
-        </div>
+    <main class="page-content">
+      <div class="container">
+        <!-- Page header -->
+        <header class="page-header animate-fade-in">
+          <h1 class="page-title gradient-text">About Jamiphy</h1>
+          <p class="page-subtitle">An independent software studio focused on building meaningful products.</p>
+        </header>
+
+        <!-- Mission section -->
+        <section class="mb-12 animate-fade-in animate-delay-1">
+          <div class="card">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot amber"></span>
+              <span class="terminal-dot green"></span>
+              <span class="text-xs ml-2 text-[var(--retro-fg-muted)] font-mono">about.txt</span>
+            </div>
+            <p class="mb-4">
+              Jamiphy is a product studio focused on building purposeful software. We design and ship our own products, contribute to the open-source ecosystem, and collaborate with partners who value calm, dependable engineering.
+            </p>
+            <p class="mb-0">
+              Our engagements range from early product discovery and prototyping to hands-on implementation, architecture, and delivery. We prioritize strong fundamentals, clear communication, and leaving systems better than we found them.
+            </p>
+          </div>
+        </section>
+
+        <!-- What we do section -->
+        <section class="mb-12 animate-fade-in animate-delay-2">
+          <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+            <span class="material-symbols-rounded text-[var(--retro-accent)]">code</span>
+            What We Do
+          </h2>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="card">
+              <span class="material-symbols-rounded text-2xl text-[var(--retro-purple)] mb-3 block">lightbulb</span>
+              <h3 class="text-base font-bold mb-2">Product Development</h3>
+              <p class="text-sm mb-0">From concept to launch, we help build products that address real-world challenges.</p>
+            </div>
+            <div class="card">
+              <span class="material-symbols-rounded text-2xl text-[var(--retro-cyan)] mb-3 block">diversity_3</span>
+              <h3 class="text-base font-bold mb-2">Team Augmentation</h3>
+              <p class="text-sm mb-0">Embedded engineering support for teams seeking additional expertise and capacity.</p>
+            </div>
+            <div class="card">
+              <span class="material-symbols-rounded text-2xl text-[var(--retro-green)] mb-3 block">public</span>
+              <h3 class="text-base font-bold mb-2">Open Source</h3>
+              <p class="text-sm mb-0">Contributing to and maintaining the tools that the broader community relies on.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Selected work section -->
+        <section class="animate-fade-in animate-delay-3">
+          <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+            <span class="material-symbols-rounded text-[var(--retro-accent)]">folder_open</span>
+            Selected Work
+          </h2>
+          <div class="space-y-3">
+            <a href="https://catholingo.com/" target="_blank" rel="noopener" class="work-item">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="work-item-title flex items-center gap-2">
+                    Catholingo
+                    <span class="material-symbols-rounded text-sm text-[var(--retro-fg-muted)]">open_in_new</span>
+                  </h3>
+                  <p class="work-item-desc">A gamified approach to learning Catholic theology—engaging, accessible, and designed to deepen understanding of the faith.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="mt-16 text-center animate-fade-in">
+          <p class="text-[var(--retro-fg-muted)] mb-4 mx-auto">Interested in working together?</p>
+          <a href="/contact/" class="btn-retro btn-primary">
+            <span class="material-symbols-rounded">mail</span>
+            Get in Touch
+          </a>
+        </section>
       </div>
     </main>
 
