@@ -314,3 +314,86 @@ if (document.readyState === 'loading') {
 } else {
   initRevealAnimations();
 }
+
+// ---------------- Contact form (Google Forms) ----------------
+function initContactForm() {
+  const form = document.querySelector('#contact-form');
+  if (!form) return;
+
+  const statusEl = document.querySelector('#contact-form-status');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (!submitBtn) return;
+
+  const defaultBtnContent = submitBtn.innerHTML;
+
+  function setStatus(message, isError = false) {
+    if (!statusEl) return;
+    statusEl.classList.remove('hidden');
+    statusEl.style.color = isError ? '#f87171' : 'var(--retro-green)';
+    statusEl.textContent = message;
+  }
+
+  function getConfig() {
+    return {
+      formId: form.dataset.googleFormId?.trim() || '',
+      nameEntry: form.dataset.nameEntry?.trim() || '',
+      emailEntry: form.dataset.emailEntry?.trim() || '',
+      messageEntry: form.dataset.messageEntry?.trim() || ''
+    };
+  }
+
+  function hasValidConfig(config) {
+    const values = Object.values(config);
+    return values.every(value => value && !value.includes('REPLACE_WITH'));
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const config = getConfig();
+    if (!hasValidConfig(config)) {
+      setStatus('This form is not configured yet. Add your Google Form ID and field entry IDs first.', true);
+      return;
+    }
+
+    const nameValue = form.querySelector('#name')?.value.trim() || '';
+    const emailValue = form.querySelector('#email')?.value.trim() || '';
+    const messageValue = form.querySelector('#message')?.value.trim() || '';
+
+    const payload = new URLSearchParams();
+    payload.append(config.nameEntry, nameValue);
+    payload.append(config.emailEntry, emailValue);
+    payload.append(config.messageEntry, messageValue);
+
+    const endpoint = `https://docs.google.com/forms/d/e/${config.formId}/formResponse`;
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="material-symbols-rounded">hourglass_top</span> Sending...';
+
+    try {
+      // Google Forms does not support CORS for browser fetch, so no-cors is expected here.
+      await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: payload.toString()
+      });
+
+      form.reset();
+      setStatus('Thanks - your message was sent successfully.');
+    } catch (_error) {
+      setStatus('We could not send your message right now. Please try again or email contact@jamiphy.com.', true);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = defaultBtnContent;
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initContactForm);
+} else {
+  initContactForm();
+}

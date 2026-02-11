@@ -47,7 +47,16 @@
             <span class="text-xs ml-2 text-[var(--retro-fg-muted)] font-mono">compose_message.sh</span>
           </div>
           
-          <form class="space-y-6" action="#" method="POST">
+          <form
+            id="contact-form"
+            class="space-y-6"
+            action="#"
+            method="POST"
+            data-google-form-id="1FAIpQLSegUs12eFuYUxnHD9seFOZiC4pKvMD3S6lz8bwHGCAbYSgtiw"
+            data-name-entry="entry.1373540626"
+            data-email-entry="entry.742447289"
+            data-message-entry="entry.105101772"
+          >
             <div class="form-group">
               <label for="name" class="form-label">
                 <span class="text-[var(--retro-green)]">$</span> Your Name
@@ -93,6 +102,8 @@
               <span class="material-symbols-rounded">send</span>
               Send Message
             </button>
+
+            <p id="contact-form-status" class="hidden text-sm text-center" role="status" aria-live="polite"></p>
           </form>
         </div>
 
